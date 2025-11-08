@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Płatność za trening</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 50px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: inline-block;
+      padding: 20px;
+      margin: 10px;
+      width: 300px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Wybierz trening</h1>
+
+  <div class="card">
+    <h2>Trening indywidualny (1h)</h2>
+    <p>Cena: 120 zł</p>
+    <form action="https://cart.przelewy24.pl/index/add" method="post" accept-charset="utf-8">
+      <input type="hidden" name="p24_crc" value="96e5aedcf221fdadeb91852f7e1a9c70aec98780" />
+      <input type="hidden" name="p24_id_salesman" value="349694" />
+      <input type="hidden" name="p24_salesman_key" value="353721c7" />
+      <input type="hidden" name="p24_currency" value="pln">
+      <input type="hidden" name="p24_name" value="Trening indywidualny" />
+      <input type="hidden" name="p24_amount" value="12000" />
+      <input type="hidden" name="p24_add" value="1" />
+      Ilość: <input type="number" name="p24_number" value="1" min="1"><br><br>
+      <button type="submit">Dodaj do koszyka</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Trening grupowy (1h, 2–6 osób)</h2>
+    <p>Cena: 80 zł</p>
+    <form action="https://cart.przelewy24.pl/index/add" method="post" accept-charset="utf-8">
+      <input type="hidden" name="p24_crc" value="96e5aedcf221fdadeb91852f7e1a9c70aec98780" />
+      <input type="hidden" name="p24_id_salesman" value="349694" />
+      <input type="hidden" name="p24_salesman_key" value="353721c7" />
+      <input type="hidden" name="p24_currency" value="pln">
+      <input type="hidden" name="p24_name" value="Trening grupowy" />
+      <input type="hidden" name="p24_amount" value="8000" />
+      <input type="hidden" name="p24_add" value="1" />
+      Ilość: <input type="number" name="p24_number" value="1" min="1"><br><br>
+      <button type="submit">Dodaj do koszyka</button>
+    </form>
+  </div>
+
+</body>
+</html>
