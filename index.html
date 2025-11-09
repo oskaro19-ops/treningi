@@ -1,74 +1,245 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Płatność za trening</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zakupy — Treningi (Przelewy24)</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      text-align: center;
-      padding: 50px;
+    :root{
+      --bg:#f7f8fa;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#0ea5a4;
+      --shadow: 0 6px 18px rgba(15,23,42,0.06);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: inline-block;
-      padding: 20px;
-      margin: 10px;
-      width: 300px;
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
     }
-    button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 15px;
-      cursor: pointer;
-      font-size: 16px;
+    .container{
+      max-width:980px;
+      margin:0 auto;
     }
-    button:hover {
-      background-color: #0056b3;
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:20px;
+    }
+    header h1{ margin:0; font-size:20px; }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap:18px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:16px;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .product-media{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .product-media img{
+      width:96px;
+      height:96px;
+      object-fit:cover;
+      border-radius:8px;
+      flex:0 0 96px;
+    }
+    .product-title{
+      font-weight:600;
+      line-height:1.15;
+    }
+    .product-desc{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .controls{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin-top:6px;
+    }
+    input[type="number"]{
+      width:72px;
+      padding:8px;
+      border-radius:8px;
+      border:1px solid #e6e9ee;
+      font-size:14px;
+    }
+    .price{
+      margin-left:auto;
+      font-weight:700;
+      font-size:16px;
+    }
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      border:0;
+      background:var(--accent);
+      color:#fff;
+      cursor:pointer;
+      font-weight:600;
+      text-decoration:none;
+    }
+    .small{
+      font-size:13px;
+      color:var(--muted);
+    }
+    footer{
+      margin-top:18px;
+      display:flex;
+      justify-content:flex-end;
+      gap:12px;
+      align-items:center;
+    }
+    .total-box{
+      background:var(--card);
+      padding:12px 16px;
+      border-radius:10px;
+      box-shadow:var(--shadow);
+      font-weight:700;
+    }
+    @media (max-width:520px){
+      .product-media{flex-direction:row}
+      .price{margin-left:0}
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>Wybierz trening — płatność Przelewy24</h1>
+      <div class="small">Ilość możesz zmienić przed dodaniem do koszyka</div>
+    </header>
 
-  <h1>Wybierz trening</h1>
+    <main class="grid">
+      <!-- PRODUCT 1: Trening indywidualny -->
+      <section class="card" aria-labelledby="p1-title">
+        <div class="product-media">
+          <img src="https://secure.przelewy24.pl/files/basket/img/products/561c55b7-e01a-4f76-9284-47a031e17831" alt="Trening indywidualny — miniaturka" />
+          <div>
+            <div id="p1-title" class="product-title">1H — TRENING SAM NA SAM Z TRENEREM</div>
+            <div class="product-desc">Trening indywidualny — 1 godzina</div>
+            <div class="small">Cena jednostkowa: <span id="p1-unit-display">120,00 zł</span></div>
+          </div>
+        </div>
 
-  <div class="card">
-    <h2>Trening indywidualny (1h)</h2>
-    <p>Cena: 120 zł</p>
-    <form action="https://cart.przelewy24.pl/index/add" method="post" accept-charset="utf-8">
-      <input type="hidden" name="p24_crc" value="96e5aedcf221fdadeb91852f7e1a9c70aec98780" />
-      <input type="hidden" name="p24_id_salesman" value="349694" />
-      <input type="hidden" name="p24_salesman_key" value="353721c7" />
-      <input type="hidden" name="p24_currency" value="pln">
-      <input type="hidden" name="p24_name" value="Trening indywidualny" />
-      <input type="hidden" name="p24_amount" value="12000" />
-      <input type="hidden" name="p24_add" value="1" />
-      Ilość: <input type="number" name="p24_number" value="1" min="1"><br><br>
-      <button type="submit">Dodaj do koszyka</button>
-    </form>
+        <!-- Przelewy24 form (product 1) -->
+        <form class="p24-form" name="p24_trening_indywidualny"
+              action="https://cart.przelewy24.pl/index/add"
+              method="post" accept-charset="utf-8" onsubmit="return validateForm(this);">
+          <!-- hidden fields required by Przelewy24 (kept from original) -->
+          <input type="hidden" name="p24_crc" value="96e5aedcf221fdadeb91852f7e1a9c70aec98780" />
+          <input type="hidden" name="p24_id_salesman" value="349694" />
+          <input type="hidden" name="p24_salesman_key" value="353721c7" />
+          <input type="hidden" name="p24_currency" value="pln" />
+          <input type="hidden" name="p24_name" value="Trening indywidualny" />
+          <!-- p24_amount is in grosze (12000 = 120.00 zł) -->
+          <input type="hidden" name="p24_amount" value="12000" />
+          <input type="hidden" name="p24_add" value="1" />
+
+          <div class="controls" aria-hidden="false">
+            <label for="p1-qty" class="small">Ilość:</label>
+            <input id="p1-qty" name="p24_number" type="number" inputmode="numeric" min="1" step="1" value="1" maxlength="4" aria-label="Ilość treningów indywidualnych" />
+            <div class="price" id="p1-line-total">120,00 zł</div>
+            <button type="submit" class="btn">Dodaj do koszyka</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- PRODUCT 2: Trening grupowy -->
+      <section class="card" aria-labelledby="p2-title">
+        <div class="product-media">
+          <img src="https://secure.przelewy24.pl/files/basket/img/products/06ca7d92-c239-4a60-96db-c94e82526220" alt="Trening grupowy — miniaturka" />
+          <div>
+            <div id="p2-title" class="product-title">1H — TRENING W GRUPIE 2-6 OSÓB</div>
+            <div class="product-desc">Trening grupowy — 1 godzina</div>
+            <div class="small">Cena jednostkowa: <span id="p2-unit-display">80,00 zł</span></div>
+          </div>
+        </div>
+
+        <!-- Przelewy24 form (product 2) -->
+        <form class="p24-form" name="p24_trening_grupowy"
+              action="https://cart.przelewy24.pl/index/add"
+              method="post" accept-charset="utf-8" onsubmit="return validateForm(this);">
+          <!-- hidden fields required by Przelewy24 (kept from original) -->
+          <input type="hidden" name="p24_crc" value="96e5aedcf221fdadeb91852f7e1a9c70aec98780" />
+          <input type="hidden" name="p24_id_salesman" value="349694" />
+          <input type="hidden" name="p24_salesman_key" value="353721c7" />
+          <input type="hidden" name="p24_currency" value="pln" />
+          <input type="hidden" name="p24_name" value="Trening grupowy" />
+          <!-- p24_amount is in grosze (8000 = 80.00 zł) -->
+          <input type="hidden" name="p24_amount" value="8000" />
+          <input type="hidden" name="p24_add" value="1" />
+
+          <div class="controls">
+            <label for="p2-qty" class="small">Ilość:</label>
+            <input id="p2-qty" name="p24_number" type="number" inputmode="numeric" min="1" step="1" value="1" maxlength="4" aria-label="Ilość treningów grupowych" />
+            <div class="price" id="p2-line-total">80,00 zł</div>
+            <button type="submit" class="btn">Dodaj do koszyka</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="total-box" id="cart-summary">Suma widoczna przy dodawaniu: aktualizuje się lokalnie</div>
+    </footer>
   </div>
 
-  <div class="card">
-    <h2>Trening grupowy (1h, 2–6 osób)</h2>
-    <p>Cena: 80 zł</p>
-    <form action="https://cart.przelewy24.pl/index/add" method="post" accept-charset="utf-8">
-      <input type="hidden" name="p24_crc" value="96e5aedcf221fdadeb91852f7e1a9c70aec98780" />
-      <input type="hidden" name="p24_id_salesman" value="349694" />
-      <input type="hidden" name="p24_salesman_key" value="353721c7" />
-      <input type="hidden" name="p24_currency" value="pln">
-      <input type="hidden" name="p24_name" value="Trening grupowy" />
-      <input type="hidden" name="p24_amount" value="8000" />
-      <input type="hidden" name="p24_add" value="1" />
-      Ilość: <input type="number" name="p24_number" value="1" min="1"><br><br>
-      <button type="submit">Dodaj do koszyka</button>
-    </form>
-  </div>
+  <script>
+    // Helper: format grosze -> "xx,yy zł"
+    function formatPLNgrosze(grosze){
+      var zl = Math.floor(grosze / 100);
+      var g = Math.abs(grosze % 100);
+      var gStr = g < 10 ? '0' + g : '' + g;
+      return zl + ',' + gStr + ' zł';
+    }
 
-</body>
-</html>
+    // Data for products (must match hidden p24_amount values)
+    const products = [
+      {
+        qtyInputId: 'p1-qty',
+        lineTotalId: 'p1-line-total',
+        unitDisplayId: 'p1-unit-display',
+        amountGrosze: 12000 // 120,00 zł
+      },
+      {
+        qtyInputId: 'p2-qty',
+        lineTotalId: 'p2-line-total',
+        unitDisplayId: 'p2-unit-display',
+        amountGrosze: 8000 // 80,00 zł
+      }
+    ];
+
+    // Initialize displays
+    products.forEach(p => {
+      const unit = document.getElementById(p.unitDisplayId);
+      const qty = document.getElementById(p.qtyInputId);
+      const line = document.getElementById(p.lineTotalId);
+      if(unit) unit.textContent = formatPLNgrosze(p.amountGrosze);
+      if(line) line.textContent = formatPLNgrosze(p.amountGrosze * Number(qty.value));
+      // update on change
+      qty.addEventListener('input', () => {
+        // sanitize: integer >= 1, <= 9999
+        let v = parseInt(qty.value || '0', 10);
+        if (isNaN(v) || v < 1) v = 1;
+        if (v > 9999) v = 9999;
+        qty.value = v;
+        line.textContent = formatPLNgrosze(p.amountGrosze * v);
+        updateCartSummary();
