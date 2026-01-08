@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mini Sklep – Przelewy24</title>
+<title>BeTheNo.1 - Płatności</title>
 
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
@@ -44,11 +44,15 @@ h1 {
 .card h2 {
   font-size:16px;
 }
-.card input[type="text"] {
-  width:60px;
+.qty {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+input[type="text"], select {
   padding:6px;
 }
-.card input[type="submit"] {
+input[type="submit"] {
   background:#0ea5e9;
   color:#fff;
   border:none;
@@ -57,13 +61,8 @@ h1 {
   cursor:pointer;
   font-weight:bold;
 }
-.card input[type="submit"]:hover {
+input[type="submit"]:hover {
   background:#0284c7;
-}
-.qty {
-  display:flex;
-  align-items:center;
-  gap:8px;
 }
 </style>
 </head>
@@ -71,7 +70,7 @@ h1 {
 <body>
 <div class="container">
 
-<h1>Mini Sklep – Płatności Przelewy24</h1>
+<h1>BeTheNo.1 – Płatności</h1>
 
 <div class="grid">
 
@@ -139,7 +138,7 @@ h1 {
 </form>
 
 <!-- Koszulka -->
-<form class="card" action="https://cart.przelewy24.pl/index/add" method="post" accept-charset="utf-8">
+<form class="card" action="https://cart.przelewy24.pl/index/add" method="post" accept-charset="utf-8" onsubmit="return prepareShirt(this)">
   <img src="https://secure.przelewy24.pl/files/basket/img/products/8dce020e-5d89-4d86-9e87-dd4d22b08aa7" alt="">
   <h2>Koszulka treningowa Nike Academy Park20<br>Logo + Inicjały</h2>
 
@@ -150,6 +149,20 @@ h1 {
   <input type="hidden" name="p24_name" value="Koszulka treningowa">
   <input type="hidden" name="p24_amount" value="5000">
   <input type="hidden" name="p24_add" value="1">
+  <input type="hidden" name="p24_description">
+
+  <label>Rozmiar:</label>
+  <select name="size" required>
+    <option value="">— wybierz —</option>
+    <option value="XS (122-128)">XS – 122–128 cm</option>
+    <option value="S (128-137)">S – 128–137 cm</option>
+    <option value="M (137-147)">M – 137–147 cm</option>
+    <option value="L (147-158)">L – 147–158 cm</option>
+    <option value="XL (158-170)">XL – 158–170 cm</option>
+  </select>
+
+  <label>Inicjały (opcjonalnie):</label>
+  <input type="text" name="initials" maxlength="3" placeholder="np. MK">
 
   <div class="qty">
     Ilość:
@@ -161,5 +174,21 @@ h1 {
 
 </div>
 </div>
+
+<script>
+function prepareShirt(form){
+  if(!form.size.value){
+    alert('Wybierz rozmiar koszulki');
+    return false;
+  }
+  const initials = form.initials.value.trim().toUpperCase();
+  form.initials.value = initials;
+  form.p24_description.value =
+    'Rozmiar: ' + form.size.value +
+    (initials ? ' | Inicjały: ' + initials : '');
+  return true;
+}
+</script>
+
 </body>
 </html>
