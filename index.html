@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeTheNo.1 - Płatności</title>
+<title>BeTheNo.1 – Płatności</title>
 
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
@@ -13,7 +13,7 @@ body {
   color:#111;
 }
 .container {
-  max-width:1000px;
+  max-width:1100px;
   margin:40px auto;
   padding:20px;
 }
@@ -51,6 +51,7 @@ h1 {
 }
 input[type="text"], select {
   padding:6px;
+  width:100%;
 }
 input[type="submit"] {
   background:#0ea5e9;
@@ -64,19 +65,22 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background:#0284c7;
 }
+label {
+  font-size:14px;
+  margin-top:6px;
+}
 </style>
 </head>
 
 <body>
 <div class="container">
-
 <h1>BeTheNo.1 – Płatności</h1>
 
 <div class="grid">
 
 <!-- Trening indywidualny -->
 <form class="card" action="https://cart.przelewy24.pl/index/add" method="post" accept-charset="utf-8">
-  <img src="https://secure.przelewy24.pl/files/basket/img/products/561c55b7-e01a-4f76-9284-47a031e17831" alt="">
+  <img src="https://secure.przelewy24.pl/files/basket/img/products/d3cf7d1d-efdc-44a6-8f5b-fe1c1ebef59f" alt="">
   <h2>1H – Trening sam na sam z trenerem</h2>
 
   <input type="hidden" name="p24_crc" value="96e5aedcf221fdadeb91852f7e1a9c70aec98780">
@@ -95,8 +99,8 @@ input[type="submit"]:hover {
   <input type="submit" value="Dodaj do koszyka">
 </form>
 
-<!-- Trening grupowy (PODMIENIONY) -->
-<form class="card" name="p24" action="https://cart.przelewy24.pl/index/add" method="post" accept-charset="utf-8">
+<!-- Trening grupowy -->
+<form class="card" action="https://cart.przelewy24.pl/index/add" method="post" accept-charset="utf-8">
   <img src="https://secure.przelewy24.pl/files/basket/img/products/720d9a6d-6a44-45d6-8e82-d15ccb0eae5e" alt="">
   <h2>1H – Trening w grupie 2–6 osób</h2>
 
@@ -118,8 +122,8 @@ input[type="submit"]:hover {
 
 <!-- Mini-Camp -->
 <form class="card" action="https://cart.przelewy24.pl/index/add" method="post" accept-charset="utf-8">
-  <img src="https://secure.przelewy24.pl/files/basket/img/products/eb34c7ab-8514-4bd2-9f8e-c3523c37dad6" alt="">
-  <h2>Mini-Camp 02.02 – 06.02.2026</h2>
+  <img src="https://secure.przelewy24.pl/files/basket/img/products/bfaa3699-ea06-41de-ae85-c66821693e42" alt="">
+  <h2>Mini-Camp 02.02–06.02.2026</h2>
 
   <input type="hidden" name="p24_crc" value="96e5aedcf221fdadeb91852f7e1a9c70aec98780">
   <input type="hidden" name="p24_id_salesman" value="349694">
@@ -154,11 +158,11 @@ input[type="submit"]:hover {
   <label>Rozmiar:</label>
   <select name="size" required>
     <option value="">— wybierz —</option>
-    <option value="XS (122-128)">XS – 122–128 cm</option>
-    <option value="S (128-137)">S – 128–137 cm</option>
-    <option value="M (137-147)">M – 137–147 cm</option>
-    <option value="L (147-158)">L – 147–158 cm</option>
-    <option value="XL (158-170)">XL – 158–170 cm</option>
+    <option value="XS (122–128 cm)">XS – 122–128 cm</option>
+    <option value="S (128–137 cm)">S – 128–137 cm</option>
+    <option value="M (137–147 cm)">M – 137–147 cm</option>
+    <option value="L (147–158 cm)">L – 147–158 cm</option>
+    <option value="XL (158–170 cm)">XL – 158–170 cm</option>
   </select>
 
   <label>Inicjały (opcjonalnie):</label>
